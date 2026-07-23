@@ -82,6 +82,14 @@ func (h *Home) CurrentVersion() (string, error) {
 	return filepath.Base(filepath.Dir(target)), nil
 }
 
+// Uninstall removes an installed version from disk.
+func (h *Home) Uninstall(version string) error {
+	if !h.IsInstalled(version) {
+		return fmt.Errorf("version %s is not installed", version)
+	}
+	return os.RemoveAll(h.versionDir(version))
+}
+
 // Activate points the bin symlink at the given installed version.
 func (h *Home) Activate(version string) error {
 	if !h.IsInstalled(version) {
