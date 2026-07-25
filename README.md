@@ -19,7 +19,7 @@ export PATH="$HOME/.fluxswitch/bin:$PATH"
 ## Usage
 
 ```sh
-fluxswitch            # interactive picker (arrow keys, / to search)
+fluxswitch            # interactive picker (arrows, / search, d download, u uninstall)
 fluxswitch 2.3.0      # switch to a specific version, downloading if needed
 fluxswitch --latest   # switch to the latest Flux release
 fluxswitch --list     # list installed versions (* marks active)
