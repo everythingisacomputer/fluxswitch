@@ -1,0 +1,33 @@
+version: 2
+
+project_name: fluxswitch
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos: [linux, darwin]
+    goarch: [amd64, arm64]
+    ldflags: [-s -w]
+    mod_timestamp: "{{ .CommitTimestamp }}"
+
+archives:
+  - formats: [tar.gz]
+
+checksum:
+  name_template: checksums.txt
+
+brews:
+  - repository:
+      owner: haney-oliver
+      name: homebrew-tap
+      token: "{{ .Env.TAP_GITHUB_TOKEN }}"
+    directory: Formula
+    homepage: https://github.com/haney-oliver/fluxswitch
+    description: Switch between Flux CLI versions, tfswitch-style
+    license: MIT
+    caveats: |
+      fluxswitch keeps flux binaries in ~/.fluxswitch and points a symlink
+      at the active version. Add it to your PATH:
+        export PATH="$HOME/.fluxswitch/bin:$PATH"
+    test: |
+      system "#{bin}/fluxswitch", "--help"
