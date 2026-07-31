@@ -15,6 +15,9 @@ import (
 	"strings"
 )
 
+// version is stamped by GoReleaser at release time.
+var version = "dev"
+
 func main() {
 	if err := run(os.Args[1:]); err != nil {
 		fmt.Fprintln(os.Stderr, "fluxswitch:", err)
@@ -36,6 +39,9 @@ func run(args []string) error {
 	case "-h", "--help", "help":
 		printUsage()
 		return nil
+	case "-v", "--version", "version":
+		fmt.Println("fluxswitch", version)
+		return nil
 	case "-l", "--list", "list":
 		return listInstalled(home)
 	case "--latest":
@@ -46,6 +52,9 @@ func run(args []string) error {
 		return switchTo(home, version)
 	default:
 		version := strings.TrimPrefix(args[0], "v")
+		if !isValidVersion(version) {
+			return fmt.Errorf("%q doesn't look like a flux version (expected something like 2.9.3)", args[0])
+		}
 		return switchTo(home, version)
 	}
 }
@@ -58,6 +67,7 @@ Usage:
   fluxswitch <version>  switch to a version (e.g. 2.3.0), downloading if needed
   fluxswitch --latest   switch to the latest Flux release
   fluxswitch --list     list installed versions
+  fluxswitch --version  print the fluxswitch version
   fluxswitch --help     show this help
 
 Versions are stored in ~/.fluxswitch/versions and the active version is
