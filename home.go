@@ -30,10 +30,12 @@ func NewHome() (*Home, error) {
 		binLink = filepath.Join(root, "bin", "flux")
 	}
 
-	if err := os.MkdirAll(filepath.Join(root, "versions"), 0o755); err != nil {
+	if err := os.MkdirAll(filepath.Join(root, "versions"), 0o750); err != nil {
 		return nil, err
 	}
-	if err := os.MkdirAll(filepath.Dir(binLink), 0o755); err != nil {
+	// FLUXSWITCH_BIN is the user's own opt-in override for where the flux
+	// symlink lives (documented feature, same trust model as GOBIN).
+	if err := os.MkdirAll(filepath.Dir(binLink), 0o750); err != nil { // #nosec G703 G301
 		return nil, err
 	}
 	return &Home{root: root, binLink: binLink}, nil
@@ -82,8 +84,13 @@ func (h *Home) CurrentVersion() (string, error) {
 	return filepath.Base(filepath.Dir(target)), nil
 }
 
-// Uninstall removes an installed version from disk.
+// Uninstall removes an installed version from disk. The version is
+// re-validated here because this is the only destructive path: it must never
+// resolve outside the versions directory.
 func (h *Home) Uninstall(version string) error {
+	if !isValidVersion(version) {
+		return fmt.Errorf("invalid version %q", version)
+	}
 	if !h.IsInstalled(version) {
 		return fmt.Errorf("version %s is not installed", version)
 	}
