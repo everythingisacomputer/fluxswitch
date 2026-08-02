@@ -6,8 +6,18 @@ Terraform.
 
 ## Install
 
+With Homebrew (macOS or Linux):
+
 ```sh
-go install github.com/haney-oliver/fluxswitch@latest
+brew tap everythingisacomputer/tap
+brew trust everythingisacomputer/tap   # newer Homebrew requires trusting third-party taps
+brew install fluxswitch
+```
+
+Or with Go:
+
+```sh
+go install github.com/everythingisacomputer/fluxswitch@latest
 ```
 
 Then put the fluxswitch bin directory on your PATH (add to your shell profile):

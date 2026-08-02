@@ -7,7 +7,7 @@ builds:
       - CGO_ENABLED=0
     goos: [linux, darwin]
     goarch: [amd64, arm64]
-    ldflags: [-s -w]
+    ldflags: [-s -w -X main.version={{ .Version }}]
     mod_timestamp: "{{ .CommitTimestamp }}"
 
 archives:
@@ -18,11 +18,11 @@ checksum:
 
 brews:
   - repository:
-      owner: haney-oliver
+      owner: everythingisacomputer
       name: homebrew-tap
       token: "{{ .Env.TAP_GITHUB_TOKEN }}"
     directory: Formula
-    homepage: https://github.com/haney-oliver/fluxswitch
+    homepage: https://github.com/everythingisacomputer/fluxswitch
     description: Switch between Flux CLI versions, tfswitch-style
     license: MIT
     caveats: |

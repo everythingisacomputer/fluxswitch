@@ -1,4 +1,4 @@
-module github.com/haney-oliver/fluxswitch
+module github.com/everythingisacomputer/fluxswitch
 
 go 1.26.5
 
