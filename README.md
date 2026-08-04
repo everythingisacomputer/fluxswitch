@@ -8,6 +8,8 @@ Switch between versions of the [Flux CLI](https://github.com/fluxcd/flux2) the
 same way [tfswitch](https://github.com/warrensbox/terraform-switcher) does for
 Terraform.
 
+![fluxswitch demo: the interactive picker installs and switches to a version, then flux --version confirms it](demo.gif)
+
 ## Install
 
 With Homebrew (macOS or Linux):
