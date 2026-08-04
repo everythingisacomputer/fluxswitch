@@ -3,6 +3,7 @@
 [![ci](https://github.com/everythingisacomputer/fluxswitch/actions/workflows/ci.yml/badge.svg)](https://github.com/everythingisacomputer/fluxswitch/actions/workflows/ci.yml)
 [![release](https://github.com/everythingisacomputer/fluxswitch/actions/workflows/release.yml/badge.svg)](https://github.com/everythingisacomputer/fluxswitch/actions/workflows/release.yml)
 [![latest release](https://img.shields.io/github/v/release/everythingisacomputer/fluxswitch)](https://github.com/everythingisacomputer/fluxswitch/releases/latest)
+[![buy me a coffee](https://img.shields.io/badge/buy%20me%20a%20coffee-☕-ffdd00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/everythingisacomputer)
 
 Switch between versions of the [Flux CLI](https://github.com/fluxcd/flux2) the
 same way [tfswitch](https://github.com/warrensbox/terraform-switcher) does for
@@ -50,3 +51,8 @@ always resolves to the active one.
 
 Set `FLUXSWITCH_BIN` to change where the symlink lives (e.g.
 `FLUXSWITCH_BIN=/usr/local/bin/flux`).
+
+## Support
+
+If fluxswitch saves you time, you can
+[buy me a coffee](https://buymeacoffee.com/everythingisacomputer). ☕
