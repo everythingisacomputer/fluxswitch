@@ -1,5 +1,9 @@
 # fluxswitch
 
+[![ci](https://github.com/everythingisacomputer/fluxswitch/actions/workflows/ci.yml/badge.svg)](https://github.com/everythingisacomputer/fluxswitch/actions/workflows/ci.yml)
+[![release](https://github.com/everythingisacomputer/fluxswitch/actions/workflows/release.yml/badge.svg)](https://github.com/everythingisacomputer/fluxswitch/actions/workflows/release.yml)
+[![latest release](https://img.shields.io/github/v/release/everythingisacomputer/fluxswitch)](https://github.com/everythingisacomputer/fluxswitch/releases/latest)
+
 Switch between versions of the [Flux CLI](https://github.com/fluxcd/flux2) the
 same way [tfswitch](https://github.com/warrensbox/terraform-switcher) does for
 Terraform.
